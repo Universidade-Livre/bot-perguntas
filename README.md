@@ -22,3 +22,12 @@ O que precisa ser feito:
 ## Fluxo da V1
 
 ![Fluxo V1](docs/bot-perguntas.png)
+
+## Tecnologias
+
+(ainda precisam ser testadas, são apenas anotações)
+
+- [Node-RED](https://nodered.org/)
+- [Node Discord Advanced](https://flows.nodered.org/node/node-red-contrib-discord-advanced)
+- [Discord API](https://discord.com/developers/docs/intro)
+- [Discord API - Create reaction](https://discord.com/developers/docs/resources/channel#create-reaction)
