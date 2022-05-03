@@ -29,6 +29,9 @@
         }
     ],
     "dependencies": {
+        "@discordjs/builders": "^0.13.0",
+        "@discordjs/rest": "^0.4.1",
+        "discord-api-types": "^0.32.0",
         "node-red": "2.2.2",
         "node-red-contrib-discord-advanced": "~3.2.1",
         "node-red-contrib-string": "~1.0.0"
