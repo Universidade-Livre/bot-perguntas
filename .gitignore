@@ -3,3 +3,5 @@ environment/node-red/data/node_modules
 environment/node-red/data/.npm
 environment/node-red/data/.config*
 environment/node-red/data/settings.js
+environment/node-red/data/.flows_cred*
+environment/node-red/data/flows_cred*

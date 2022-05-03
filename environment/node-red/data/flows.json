@@ -1,10 +1,234 @@
 [
     {
-        "id": "281f5e639bbffdf5",
+        "id": "feb8391b4e5866c6",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
-        "info": "",
-        "env": []
+        "info": ""
+    },
+    {
+        "id": "404693b0e82eeab4",
+        "type": "discord-token",
+        "name": "UBL-test"
+    },
+    {
+        "id": "b93ceeb68cf5aa5e",
+        "type": "discord-token",
+        "name": ""
+    },
+    {
+        "id": "5f1848c885097b69",
+        "type": "discordMessage",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "token": "404693b0e82eeab4",
+        "x": 100,
+        "y": 40,
+        "wires": [
+            [
+                "d8bf87a0b784edf2"
+            ]
+        ]
+    },
+    {
+        "id": "d8bf87a0b784edf2",
+        "type": "switch",
+        "z": "feb8391b4e5866c6",
+        "name": "Check if message has a command",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "!pergunta",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 340,
+        "y": 40,
+        "wires": [
+            [
+                "af2bd95ac5f4ba35"
+            ]
+        ]
+    },
+    {
+        "id": "f2fa3f81a4889996",
+        "type": "change",
+        "z": "feb8391b4e5866c6",
+        "name": "Set message for !pergunta",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "pergunta",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "channel",
+                "pt": "msg",
+                "to": "719691382180151430",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 40,
+        "wires": [
+            [
+                "6c9e9bc955d9140d"
+            ]
+        ]
+    },
+    {
+        "id": "6c9e9bc955d9140d",
+        "type": "discordMessageManager",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "channel": "",
+        "token": "404693b0e82eeab4",
+        "x": 790,
+        "y": 120,
+        "wires": [
+            [
+                "7e4ff5c1b7e3ffbd"
+            ]
+        ]
+    },
+    {
+        "id": "af2bd95ac5f4ba35",
+        "type": "string",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "methods": [
+            {
+                "name": "between",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "!pergunta \""
+                    },
+                    {
+                        "type": "str",
+                        "value": "\""
+                    }
+                ]
+            },
+            {
+                "name": "append",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "\\n"
+                    }
+                ]
+            },
+            {
+                "name": "append",
+                "params": [
+                    {
+                        "type": "str",
+                        "value": "@ever"
+                    }
+                ]
+            }
+        ],
+        "prop": "payload",
+        "propout": "pergunta",
+        "object": "msg",
+        "objectout": "msg",
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "f2fa3f81a4889996"
+            ]
+        ]
+    },
+    {
+        "id": "cb5108cbf7485132",
+        "type": "function",
+        "z": "feb8391b4e5866c6",
+        "name": "reactAlternatives",
+        "func": "const client = msg.discord;\nconst channel = await client.channels.fetch(msg.payload.channelId);\nconst message = channel.messages.fetch(msg.payload.id)\n\nmessage.then(m => m.react('🇦'));\nmessage.then(m => m.react('🇧'));\nmessage.then(m => m.react('🇨'));\nmessage.then(m => m.react('🇩'));\nmessage.then(m => m.react('🇪'));\n\ndelete msg.discord;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1090,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6caba5cf984e2f48",
+        "type": "inject",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"_msgid\":\"50d64316d676eb45\",\"payload\":\"teste\",\"channel\":\"719691382180151430\",\"member\":{\"guildId\":\"630449913112559667\",\"joinedTimestamp\":1570381372577,\"premiumSinceTimestamp\":null,\"nickname\":null,\"pending\":false,\"communicationDisabledUntilTimestamp\":null,\"userId\":\"307997668607787009\",\"avatar\":null,\"displayName\":\"Mateus Roveda\",\"roles\":[\"631261692549922826\",\"630449913112559667\"],\"avatarURL\":null,\"displayAvatarURL\":\"https://cdn.discordapp.com/avatars/307997668607787009/027bf8cd66cdf43d3b85144bd5f6e0d0.webp\"},\"memberRoleNames\":[{\"guild\":\"630449913112559667\",\"icon\":null,\"unicodeEmoji\":null,\"id\":\"631261692549922826\",\"name\":\"Admin\",\"color\":3066993,\"hoist\":true,\"rawPosition\":5,\"permissions\":\"8589410303\",\"managed\":false,\"mentionable\":false,\"createdTimestamp\":1570574915779},{\"guild\":\"630449913112559667\",\"icon\":null,\"unicodeEmoji\":null,\"id\":\"630449913112559667\",\"name\":\"@everyone\",\"color\":0,\"hoist\":false,\"rawPosition\":0,\"permissions\":\"1071698664001\",\"managed\":false,\"mentionable\":false,\"createdTimestamp\":1570381372479}],\"memberRoleIDs\":[{\"guild\":\"630449913112559667\",\"icon\":null,\"unicodeEmoji\":null,\"id\":\"631261692549922826\",\"name\":\"Admin\",\"color\":3066993,\"hoist\":true,\"rawPosition\":5,\"permissions\":\"8589410303\",\"managed\":false,\"mentionable\":false,\"createdTimestamp\":1570574915779},{\"guild\":\"630449913112559667\",\"icon\":null,\"unicodeEmoji\":null,\"id\":\"630449913112559667\",\"name\":\"@everyone\",\"color\":0,\"hoist\":false,\"rawPosition\":0,\"permissions\":\"1071698664001\",\"managed\":false,\"mentionable\":false,\"createdTimestamp\":1570381372479}],\"data\":{\"channelId\":\"719691382180151430\",\"guildId\":\"630449913112559667\",\"id\":\"970850578408284160\",\"createdTimestamp\":1651539215424,\"type\":\"DEFAULT\",\"system\":false,\"content\":\"!pergunta \\\"teste\\\"\",\"authorId\":\"307997668607787009\",\"pinned\":false,\"tts\":false,\"nonce\":\"970850577678336000\",\"embeds\":[],\"components\":[],\"attachments\":[],\"stickers\":[],\"editedTimestamp\":null,\"webhookId\":null,\"groupActivityApplicationId\":null,\"applicationId\":null,\"activity\":null,\"flags\":0,\"reference\":null,\"interaction\":null,\"cleanContent\":\"!pergunta \\\"teste\\\"\",\"channel\":\"719691382180151430\"},\"author\":{\"id\":\"307997668607787009\",\"bot\":false,\"system\":false,\"flags\":128,\"username\":\"Mateus Roveda\",\"discriminator\":\"5744\",\"avatar\":\"027bf8cd66cdf43d3b85144bd5f6e0d0\",\"banner\":null,\"accentColor\":null,\"createdTimestamp\":1493502766516,\"defaultAvatarURL\":\"https://cdn.discordapp.com/embed/avatars/4.png\",\"hexAccentColor\":null,\"tag\":\"Mateus Roveda#5744\",\"avatarURL\":\"https://cdn.discordapp.com/avatars/307997668607787009/027bf8cd66cdf43d3b85144bd5f6e0d0.webp\",\"displayAvatarURL\":\"https://cdn.discordapp.com/avatars/307997668607787009/027bf8cd66cdf43d3b85144bd5f6e0d0.webp\",\"bannerURL\":null},\"pergunta\":\"teste\"}",
+        "payloadType": "json",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "d8bf87a0b784edf2"
+            ]
+        ]
+    },
+    {
+        "id": "a1439e6bd90bac7b",
+        "type": "debug",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7e4ff5c1b7e3ffbd",
+        "type": "discordClient",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "token": "404693b0e82eeab4",
+        "x": 990,
+        "y": 40,
+        "wires": [
+            [
+                "cb5108cbf7485132"
+            ]
+        ]
     }
 ]

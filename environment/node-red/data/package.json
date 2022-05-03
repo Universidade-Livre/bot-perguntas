@@ -30,7 +30,8 @@
     ],
     "dependencies": {
         "node-red": "2.2.2",
-        "node-red-contrib-discord-advanced": "~3.2.1"
+        "node-red-contrib-discord-advanced": "~3.2.1",
+        "node-red-contrib-string": "~1.0.0"
     },
     "engines": {
         "node": ">=12"
