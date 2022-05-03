@@ -18,7 +18,7 @@
         "name": "Recebe a mensagem",
         "token": "404693b0e82eeab4",
         "x": 120,
-        "y": 40,
+        "y": 160,
         "wires": [
             [
                 "fda976a6b5222a55"
@@ -43,7 +43,7 @@
         "repair": false,
         "outputs": 1,
         "x": 620,
-        "y": 120,
+        "y": 220,
         "wires": [
             [
                 "af2bd95ac5f4ba35"
@@ -67,8 +67,8 @@
                 "t": "set",
                 "p": "channel",
                 "pt": "msg",
-                "to": "719691382180151430",
-                "tot": "str"
+                "to": "channelIdDest",
+                "tot": "flow"
             }
         ],
         "action": "",
@@ -77,7 +77,7 @@
         "to": "",
         "reg": false,
         "x": 630,
-        "y": 240,
+        "y": 340,
         "wires": [
             [
                 "6c9e9bc955d9140d"
@@ -92,7 +92,7 @@
         "channel": "",
         "token": "404693b0e82eeab4",
         "x": 870,
-        "y": 240,
+        "y": 340,
         "wires": [
             [
                 "7e4ff5c1b7e3ffbd"
@@ -131,8 +131,8 @@
                 "name": "append",
                 "params": [
                     {
-                        "type": "str",
-                        "value": "<@&631261692549922826>"
+                        "type": "flow",
+                        "value": "role"
                     }
                 ]
             }
@@ -142,7 +142,7 @@
         "object": "msg",
         "objectout": "msg",
         "x": 630,
-        "y": 180,
+        "y": 280,
         "wires": [
             [
                 "f2fa3f81a4889996"
@@ -153,15 +153,15 @@
         "id": "cb5108cbf7485132",
         "type": "function",
         "z": "feb8391b4e5866c6",
-        "name": "Adiciona reações com alternativas",
-        "func": "const client = msg.discord;\nconst channel = await client.channels.fetch(msg.payload.channelId);\nmessage = channel.messages.fetch(msg.payload.id);\n\nmessage.then(m => m.react('🇦'));\nmessage.then(m => m.react('🇧'));\nmessage.then(m => m.react('🇨'));\nmessage.then(m => m.react('🇩'));\nmessage.then(m => m.react('🇪'));\n\ndelete msg.discord;\nreturn msg;",
+        "name": "Adiciona reações e cria thread",
+        "func": "const client = msg.discord;\nconst channel = await client.channels.fetch('719691444826144818');\nmessage = channel.messages.fetch(msg.payload.id);\n\nmessage.then(m => m.react('🇦'));\nmessage.then(m => m.react('🇧'));\nmessage.then(m => m.react('🇨'));\nmessage.then(m => m.react('🇩'));\nmessage.then(m => m.react('🇪'));\n\nmessage.then(m => m.startThread({\n        name: \"Discussão\",\n        autoArchiveDuration: 1440,\n        type: 'GUILD_PUBLIC_THREAD'\n}));\n\ndelete msg.discord;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
-        "y": 200,
+        "x": 1210,
+        "y": 360,
         "wires": [
             [
                 "a1439e6bd90bac7b"
@@ -182,7 +182,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1290,
-        "y": 60,
+        "y": 160,
         "wires": []
     },
     {
@@ -192,7 +192,7 @@
         "name": "Interface com Discord.js",
         "token": "404693b0e82eeab4",
         "x": 1110,
-        "y": 140,
+        "y": 240,
         "wires": [
             [
                 "cb5108cbf7485132"
@@ -209,19 +209,77 @@
         "rules": [
             {
                 "t": "cont",
-                "v": "719691382180151430",
-                "vt": "str"
+                "v": "channelId",
+                "vt": "flow"
             }
         ],
         "checkall": "true",
         "repair": false,
         "outputs": 1,
         "x": 280,
-        "y": 120,
+        "y": 220,
         "wires": [
             [
                 "d8bf87a0b784edf2"
             ]
+        ]
+    },
+    {
+        "id": "2ab7e8e889171c28",
+        "type": "inject",
+        "z": "feb8391b4e5866c6",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 80,
+        "wires": [
+            [
+                "a400c5b14d302567"
+            ]
+        ]
+    },
+    {
+        "id": "a400c5b14d302567",
+        "type": "change",
+        "z": "feb8391b4e5866c6",
+        "name": "Define variáveis",
+        "rules": [
+            {
+                "t": "set",
+                "p": "channelId",
+                "pt": "flow",
+                "to": "719691382180151430",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "role",
+                "pt": "flow",
+                "to": "<@&631261692549922826>",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "channelIdDest",
+                "pt": "flow",
+                "to": "719691444826144818",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 80,
+        "wires": [
+            []
         ]
     }
 ]
