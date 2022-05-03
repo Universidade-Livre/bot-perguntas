@@ -49,10 +49,16 @@ O que precisa ser feito:
 - Implementação de um comando para dizer a resposta correta da pergunta
 - Implementação para usuários não admins/mods criarem perguntas
 
+Ideias futuras:
+- Consumir perguntas de um CSV
 ## Fluxo da V1
+Planejado
 
 ![Fluxo V1](docs/bot-perguntas.png)
 
+Node-RED
+
+![Fluxo Node-RED](docs/fluxo-nodered.png)
 ## Tecnologias
 
 (ainda precisam ser testadas, são apenas anotações)
@@ -61,3 +67,13 @@ O que precisa ser feito:
 - [Node Discord Advanced](https://flows.nodered.org/node/node-red-contrib-discord-advanced)
 - [Discord API](https://discord.com/developers/docs/intro)
 - [Discord API - Create reaction](https://discord.com/developers/docs/resources/channel#create-reaction)
+
+## Resultados
+
+Comando para criação da pergunta
+
+![comando](docs/comando.jpg)
+
+Publicação do bot
+
+![publicacao](docs/execucao.jpg)
