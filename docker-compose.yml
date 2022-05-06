@@ -2,10 +2,8 @@ version: "3.7"
 
 services:
   node-red:
-    #image: nodered/node-red:latest
     build:
       context: environment/node-red
-    #user: 1001:1001
     ports:
       - "1880:1880"
     networks:

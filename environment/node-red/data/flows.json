@@ -35,7 +35,7 @@
         "rules": [
             {
                 "t": "cont",
-                "v": "!pergunta",
+                "v": "!pergunta \"",
                 "vt": "str"
             }
         ],
@@ -160,8 +160,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1210,
-        "y": 360,
+        "x": 1170,
+        "y": 340,
         "wires": [
             [
                 "a1439e6bd90bac7b"
@@ -191,8 +191,8 @@
         "z": "feb8391b4e5866c6",
         "name": "Interface com Discord.js",
         "token": "404693b0e82eeab4",
-        "x": 1110,
-        "y": 240,
+        "x": 1050,
+        "y": 280,
         "wires": [
             [
                 "cb5108cbf7485132"
@@ -258,16 +258,16 @@
             },
             {
                 "t": "set",
-                "p": "role",
+                "p": "channelIdDest",
                 "pt": "flow",
-                "to": "<@&631261692549922826>",
+                "to": "719691444826144818",
                 "tot": "str"
             },
             {
                 "t": "set",
-                "p": "channelIdDest",
+                "p": "role",
                 "pt": "flow",
-                "to": "719691444826144818",
+                "to": "<@&631261692549922826>",
                 "tot": "str"
             }
         ],

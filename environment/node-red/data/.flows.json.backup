@@ -154,14 +154,14 @@
         "type": "function",
         "z": "feb8391b4e5866c6",
         "name": "Adiciona reações e cria thread",
-        "func": "const client = msg.discord;\nconst channel = await client.channels.fetch('719691444826144818');\nmessage = channel.messages.fetch(msg.payload.id);\n\nmessage.then(m => m.react('🇦'));\nmessage.then(m => m.react('🇧'));\nmessage.then(m => m.react('🇨'));\nmessage.then(m => m.react('🇩'));\nmessage.then(m => m.react('🇪'));\n\nmessage.then(m => m.startThread({\n        name: \"Discussão\",\n        autoArchiveDuration: 1440,\n        type: 'GUILD_PUBLIC_THREAD'\n}));\n\ndelete msg.discord;\nreturn msg;",
+        "func": "const client = msg.discord;\nconst channel = await client.channels.fetch(msg.payload.channelId);\nmessage = channel.messages.fetch(msg.payload.id);\n\nmessage.then(m => m.react('🇦'));\nmessage.then(m => m.react('🇧'));\nmessage.then(m => m.react('🇨'));\nmessage.then(m => m.react('🇩'));\nmessage.then(m => m.react('🇪'));\n\nmessage.then(m => m.startThread({\n        name: \"Discussão\",\n        autoArchiveDuration: 1440,\n        type: 'GUILD_PUBLIC_THREAD'\n}));\n\ndelete msg.discord;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1210,
-        "y": 360,
+        "x": 1170,
+        "y": 340,
         "wires": [
             [
                 "a1439e6bd90bac7b"
@@ -191,8 +191,8 @@
         "z": "feb8391b4e5866c6",
         "name": "Interface com Discord.js",
         "token": "404693b0e82eeab4",
-        "x": 1110,
-        "y": 240,
+        "x": 1050,
+        "y": 280,
         "wires": [
             [
                 "cb5108cbf7485132"
