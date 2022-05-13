@@ -18,15 +18,6 @@ Clonar o projeto
 git clone https://github.com/Universidade-Livre/bot-perguntas.git
 ```
 
-Fazer o build da imagem
-```
-docker compose build
-
-OU
-
-docker-compose build
-```
-
 Executar o projeto
 ```
 docker compose up -d
